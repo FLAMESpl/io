@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace PhotoMark.Annotations
 {
-    class Marker
+    public class Marker : Annotation
     {
+        public Point Position { get; set; }
     }
 }

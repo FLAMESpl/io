@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PhotoMark.Files;
 using System.Windows.Forms;
 
 namespace PhotoMark.Controls
@@ -15,6 +8,11 @@ namespace PhotoMark.Controls
         public Carousel()
         {
             InitializeComponent();
+        }
+
+        public void LoadFiles(File files)
+        {
+
         }
     }
 }

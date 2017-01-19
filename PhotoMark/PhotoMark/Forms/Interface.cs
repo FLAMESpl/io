@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PhotoMark.Forms
 {
-    public partial class Main : Form
+    public partial class Interface : Form
     {
-        public Main()
+        public Interface()
         {
             InitializeComponent();
         }

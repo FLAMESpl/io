@@ -1,6 +1,6 @@
 ﻿namespace PhotoMark.Forms
 {
-    partial class Main
+    partial class Interface
     {
         /// <summary>
         /// Required designer variable.
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // Main
+            // Interface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "Main";
+            this.ClientSize = new System.Drawing.Size(566, 473);
+            this.Name = "Interface";
             this.Text = "PhotoMark";
             this.ResumeLayout(false);
 
