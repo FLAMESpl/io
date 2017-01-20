@@ -1,21 +1,23 @@
-<root filename="nazwa_pliku.png" class="image">
+<root class="image">
 
-  <marker>
+  <annotation>
+    <type>Marker</type>
     <position>
       <x>250</x>
       <y>400</y>
     </position>
     <label>Samochody jeżdżą</label>
     <color>Green</color>
-  </marker>
+  </annotation>
   
-  <marker>
+  <annotation>
+    <type>Marker</type>
     <position>
       <x>600</x>
       <y>122</y>
     </position>
     <label>Samoloty latają</label>
     <color>Yellow</color>
-  </marker>
+  </annotation>
   
  </root>
