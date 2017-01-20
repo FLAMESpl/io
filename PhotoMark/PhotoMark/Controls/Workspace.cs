@@ -2,8 +2,10 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using PhotoMark.Files;
 using IO = System.IO;
+using PhotoMark.Files;
+using PhotoMark.Controls.Events;
+using System.Drawing;
 
 namespace PhotoMark.Controls
 {
@@ -14,6 +16,7 @@ namespace PhotoMark.Controls
         public Workspace()
         {
             InitializeComponent();
+            carousel.FileSelection += carousel_FileSelected;
         }
 
         public void LoadFilePacket(string directory)
@@ -24,6 +27,25 @@ namespace PhotoMark.Controls
                     .SortByName();
 
             carousel.ShowFiles(files);
+        }
+
+        private void LoadFile(File file)
+        {
+            pictureBox1.Image?.Dispose();
+            pictureBox1.Image = Image.FromFile(file.Name);
+        }
+
+        private void carousel_FileSelected(object sender, FileSelectionEventArgs e)
+        {
+            var file = files.FirstOrDefault(x => x.Name == e.NewFilePath);
+            if (file != null)
+            {
+                LoadFile(file);
+            }
+            else
+            {
+                MessageBox.Show("No file found", $"Could not load `{ e.NewFilePath }` file from disc", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

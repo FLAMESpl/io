@@ -7,7 +7,9 @@ namespace PhotoMark.Files
     {
         private static readonly List<string> extensionNames = new List<string>
         {
-            "BMP"
+            "BMP",
+            "JPG",
+            "PNG"
         };
 
         public static bool Check(string fileName)

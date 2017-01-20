@@ -21,9 +21,13 @@ namespace PhotoMark.Controls
             InitializeComponent();
         }
 
-        public Size ThumbnailSize() => new Size((int)(flowLayoutPanel.Height * 1.25), flowLayoutPanel.Height);
-
         public void OnFileSelected(FileSelectionEventArgs e) => FileSelection?.Invoke(this, e);
+
+        public Size ThumbnailSize()
+        {
+            var basicHeight = flowLayoutPanel.Height - 26;
+            return new Size((int)(basicHeight * 1.25), basicHeight);
+        }
 
         public void ShowFiles(IEnumerable<File> files)
         {
