@@ -45,11 +45,10 @@ namespace PhotoMark.Controls
 
         public void ClearContent()
         {
-            foreach (var pictureBox in flowLayoutPanel.Controls.Cast<PictureBox>())
-            {
-                pictureBox.Image.Dispose();
-            }
+            var pictureBoxes = flowLayoutPanel.Controls.Cast<PictureBox>().ToList();
+            selectedPictureBox = null;
             flowLayoutPanel.Controls.Clear();
+            pictureBoxes.ForEach(p => p.Dispose());
         }
 
         private void ThumbnailClick(PictureBox thumbnail, string fileName)
