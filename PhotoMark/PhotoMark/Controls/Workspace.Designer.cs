@@ -30,6 +30,7 @@
         {
             this.groupBoxMain = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.carousel = new PhotoMark.Controls.Carousel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             // 
             this.tableLayoutPanel.ColumnCount = 1;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel.Controls.Add(this.carousel, 0, 1);
             this.tableLayoutPanel.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(4, 19);
@@ -66,6 +68,13 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 172F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(753, 620);
             this.tableLayoutPanel.TabIndex = 0;
+            // 
+            // carousel
+            // 
+            this.carousel.Location = new System.Drawing.Point(3, 149);
+            this.carousel.Name = "carousel";
+            this.carousel.Size = new System.Drawing.Size(475, 94);
+            this.carousel.TabIndex = 0;
             // 
             // panel1
             // 
@@ -125,6 +134,7 @@
 
         private System.Windows.Forms.GroupBox groupBoxMain;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
+        private Carousel carousel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button4;

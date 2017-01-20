@@ -18,9 +18,10 @@ namespace PhotoMark.Controls
 
         public void LoadFilePacket(string directory)
         {
-            files.AddRange(IO.Directory.GetFiles(directory)
-                .Where(f => FilesExtensions.Check(f))
-                .Select(f => new File(f)));
+            files = new List<File>(IO.Directory.GetFiles(directory).ToList
+                    .Where(f => FilesExtensions.Check(f))
+                    .Select(f => new File(f)))
+                    .SortByName();
         }
     }
 }
