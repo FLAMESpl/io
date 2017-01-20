@@ -7,6 +7,7 @@ using PhotoMark.Files;
 using PhotoMark.Controls.Events;
 using System.Drawing;
 using PhotoMark.Serializing;
+using PhotoMark.Annotations;
 
 namespace PhotoMark.Controls
 {
@@ -34,6 +35,21 @@ namespace PhotoMark.Controls
         {
             pictureBox1.Image?.Dispose();
             pictureBox1.Image = Image.FromFile(file.Name);
+            foreach (var annotation in file.Annotations)
+            {
+                DrawMarker(annotation as Marker);
+            }
+        }
+
+        private void DrawMarker(Marker marker)
+        {
+            using (var graphics = Graphics.FromImage(pictureBox1.Image))
+            {
+                using (var brush = new SolidBrush(Color.Yellow))
+                {
+                    graphics.FillEllipse(brush, marker.Position.X, marker.Position.Y, 16, 16);
+                }
+            }
         }
 
         private void carousel_FileSelected(object sender, FileSelectionEventArgs e)
