@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializing\Extensions.cs" />
     <EmbeddedResource Include="Controls\Carousel.resx">
       <DependentUpon>Carousel.cs</DependentUpon>
     </EmbeddedResource>

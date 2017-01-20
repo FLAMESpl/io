@@ -6,6 +6,7 @@ using IO = System.IO;
 using PhotoMark.Files;
 using PhotoMark.Controls.Events;
 using System.Drawing;
+using PhotoMark.Serializing;
 
 namespace PhotoMark.Controls
 {
@@ -23,7 +24,7 @@ namespace PhotoMark.Controls
         {
             files = new List<File>(IO.Directory.GetFiles(directory)
                     .Where(f => FilesExtensions.Check(f))
-                    .Select(f => new File(f)))
+                    .Select(f => new File(f).LoadAnnotations()))
                     .SortByName();
 
             carousel.ShowFiles(files);

@@ -1,14 +1,13 @@
 ﻿using PhotoMark.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 
 namespace PhotoMark.Files
 {
     public class File
     {
         public string Name { get; set; }
-        public ICollection<Annotation> Annotations { get; }
+        public ICollection<Annotation> Annotations { get; set; }
 
         public File(string name)
         {
