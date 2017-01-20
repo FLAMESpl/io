@@ -33,8 +33,8 @@ namespace PhotoMark.Controls
 
         private void LoadFile(File file)
         {
-            pictureBox1.Image?.Dispose();
-            pictureBox1.Image = Image.FromFile(file.Name);
+            pictureBox.Image?.Dispose();
+            pictureBox.Image = Image.FromFile(file.Name);
             foreach (var annotation in file.Annotations)
             {
                 DrawMarker(annotation as Marker);
@@ -43,7 +43,7 @@ namespace PhotoMark.Controls
 
         private void DrawMarker(Marker marker)
         {
-            using (var graphics = Graphics.FromImage(pictureBox1.Image))
+            using (var graphics = Graphics.FromImage(pictureBox.Image))
             {
                 using (var brush = new SolidBrush(Color.Yellow))
                 {
