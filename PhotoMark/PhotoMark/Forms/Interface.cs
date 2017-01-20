@@ -16,5 +16,12 @@ namespace PhotoMark.Forms
         {
             InitializeComponent();
         }
+
+        private void buttonLoadFiles_Click(object sender, EventArgs e)
+        {
+            var dialog = new FolderBrowserDialog();
+            dialog.ShowDialog();
+            workspace.LoadFilePacket(dialog.SelectedPath);
+        }
     }
 }

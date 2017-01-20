@@ -19,7 +19,7 @@ namespace PhotoMark.Files
 
     public class FileComparer : IComparer<File>
     {
-        public int Compare(File x, File y) => new CaseInsensitiveComparer().Compare(x, y);
+        public int Compare(File x, File y) => new CaseInsensitiveComparer().Compare(x.Name, y.Name);
     }
 
     public static class FileExtensions

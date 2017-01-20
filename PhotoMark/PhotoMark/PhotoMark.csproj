@@ -54,6 +54,7 @@
     <Compile Include="Controls\Carousel.Designer.cs">
       <DependentUpon>Carousel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Events\FileSelectionEventArgs.cs" />
     <Compile Include="Controls\Workspace.cs">
       <SubType>UserControl</SubType>
     </Compile>

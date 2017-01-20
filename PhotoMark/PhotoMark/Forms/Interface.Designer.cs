@@ -28,46 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonLoadFiles = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.workspace1 = new PhotoMark.Controls.Workspace();
+            this.workspace = new PhotoMark.Controls.Workspace();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonLoadFiles
             // 
-            this.button1.Location = new System.Drawing.Point(13, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 42);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Wczytaj pakiet";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonLoadFiles.Location = new System.Drawing.Point(10, 11);
+            this.buttonLoadFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonLoadFiles.Name = "buttonLoadFiles";
+            this.buttonLoadFiles.Size = new System.Drawing.Size(102, 34);
+            this.buttonLoadFiles.TabIndex = 0;
+            this.buttonLoadFiles.Text = "Wczytaj pakiet";
+            this.buttonLoadFiles.UseVisualStyleBackColor = true;
+            this.buttonLoadFiles.Click += new System.EventHandler(this.buttonLoadFiles_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(635, 12);
+            this.button2.Location = new System.Drawing.Point(476, 10);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 43);
+            this.button2.Size = new System.Drawing.Size(104, 35);
             this.button2.TabIndex = 1;
             this.button2.Text = "Zapisz odpowiedź";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // workspace1
+            // workspace
             // 
-            this.workspace1.Location = new System.Drawing.Point(13, 62);
-            this.workspace1.Margin = new System.Windows.Forms.Padding(4);
-            this.workspace1.Name = "workspace1";
-            this.workspace1.Size = new System.Drawing.Size(761, 643);
-            this.workspace1.TabIndex = 2;
+            this.workspace.Location = new System.Drawing.Point(10, 50);
+            this.workspace.Name = "workspace";
+            this.workspace.Size = new System.Drawing.Size(571, 522);
+            this.workspace.TabIndex = 2;
             // 
             // Interface
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 723);
-            this.Controls.Add(this.workspace1);
+            this.ClientSize = new System.Drawing.Size(589, 587);
+            this.Controls.Add(this.workspace);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Controls.Add(this.buttonLoadFiles);
             this.Name = "Interface";
             this.Text = "PhotoMark";
             this.ResumeLayout(false);
@@ -76,9 +77,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonLoadFiles;
         private System.Windows.Forms.Button button2;
-        private Controls.Workspace workspace1;
+        private Controls.Workspace workspace;
     }
 }
 
