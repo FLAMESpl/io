@@ -8,12 +8,15 @@ using PhotoMark.Controls.Events;
 using System.Drawing;
 using PhotoMark.Serializing;
 using PhotoMark.Annotations;
+using System;
 
 namespace PhotoMark.Controls
 {
     public partial class Workspace : UserControl
     {
         private List<File> files;
+        private File activeFile;
+        private Size originalSize;
 
         public Workspace()
         {
@@ -33,6 +36,7 @@ namespace PhotoMark.Controls
 
         private void LoadFile(File file)
         {
+            activeFile = file;
             pictureBox.Image?.Dispose();
             pictureBox.Image = Image.FromFile(file.Name);
             foreach (var annotation in file.Annotations)
@@ -63,6 +67,18 @@ namespace PhotoMark.Controls
             {
                 MessageBox.Show("No file found", $"Could not load `{ e.NewFilePath }` file from disc", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+            var eventArgs = (MouseEventArgs)e;
+            var marker = new Marker();
+            var scale = pictureBox.Image.Size.Height / (double)pictureBox.Size.Height;
+            marker.Position = new Point((int)(eventArgs.X * scale), (int)(eventArgs.Y * scale));
+            activeFile.Annotations.Add(marker);
+            DrawMarker(marker);
+            pictureBox.Invalidate();
+            
         }
     }
 }
