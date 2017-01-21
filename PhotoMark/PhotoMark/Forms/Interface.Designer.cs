@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.buttonLoadFiles = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.workspace = new PhotoMark.Controls.Workspace();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -49,16 +49,17 @@
             this.buttonLoadFiles.UseVisualStyleBackColor = true;
             this.buttonLoadFiles.Click += new System.EventHandler(this.buttonLoadFiles_Click);
             // 
-            // button2
+            // buttonSave
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(569, 2);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(156, 40);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Zapisz odpowiedź";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSave.Location = new System.Drawing.Point(569, 2);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(156, 40);
+            this.buttonSave.TabIndex = 1;
+            this.buttonSave.Text = "Zapisz odpowiedź";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // tableLayoutPanelMain
             // 
@@ -90,7 +91,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel1.Controls.Add(this.buttonLoadFiles, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonSave, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -116,7 +117,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonLoadFiles;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
         private Controls.Workspace workspace;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

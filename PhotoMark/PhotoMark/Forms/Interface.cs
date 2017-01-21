@@ -16,5 +16,7 @@ namespace PhotoMark.Forms
             if (dialog.ShowDialog() == DialogResult.OK)
                 workspace.LoadFilePacket(dialog.SelectedPath);
         }
+
+        private void buttonSave_Click(object sender, EventArgs e) => workspace.SaveFilePacket();
     }
 }

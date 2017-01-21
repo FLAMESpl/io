@@ -16,13 +16,14 @@ namespace PhotoMark.Controls
     {
         private List<File> files;
         private File activeFile;
-        private Size originalSize;
 
         public Workspace()
         {
             InitializeComponent();
             carousel.FileSelection += carousel_FileSelected;
         }
+
+        public void SaveFilePacket() => files.ForEach(f => f.SaveAnnotations());
 
         public void LoadFilePacket(string directory)
         {
@@ -76,6 +77,7 @@ namespace PhotoMark.Controls
             var scale = pictureBox.Image.Size.Height / (double)pictureBox.Size.Height;
             marker.Position = new Point((int)(eventArgs.X * scale), (int)(eventArgs.Y * scale));
             activeFile.Annotations.Add(marker);
+            activeFile.HasChanged = true;
             DrawMarker(marker);
             pictureBox.Invalidate();
             

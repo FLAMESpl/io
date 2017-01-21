@@ -6,8 +6,9 @@ namespace PhotoMark.Files
 {
     public class File
     {
-        public string Name { get; set; }
         public ICollection<Annotation> Annotations { get; set; }
+        public bool HasChanged { get; set; } = false;
+        public string Name { get; set; }
 
         public File(string name)
         {
