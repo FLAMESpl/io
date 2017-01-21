@@ -12,6 +12,8 @@ namespace PhotoMark.Controls
     {
         public event EventHandler<FileSelectionEventArgs> FileSelection;
 
+        private int index;
+        private IReadOnlyList<File> files;
         private PictureBox selectedPictureBox = null;
         private readonly Color activeColor = SystemColors.ActiveCaption;
         private readonly Color inactiveColor = SystemColors.InactiveCaption;
@@ -29,19 +31,21 @@ namespace PhotoMark.Controls
             return new Size((int)(basicHeight * 1.25), basicHeight);
         }
 
-        public void ShowFiles(IEnumerable<File> files)
+        public void ShowFiles(IReadOnlyList<File> files)
         {
+            this.files = files;
             ClearContent();
-            foreach (var file in files)
+            for (int i = 0; i < files.Count; i++)
             {
                 var pictureBox = new PictureBox
                 {
                     BackColor = inactiveColor,
                     Size = ThumbnailSize(),
                     SizeMode = PictureBoxSizeMode.Zoom,
-                    Image = Image.FromFile(file.Name)
+                    Image = Image.FromFile(files[i].Name)
                 };
-                pictureBox.Click += (s, e) => ThumbnailClick(s as PictureBox, file.Name);
+                var indexForEvent = i;
+                pictureBox.Click += (s, e) => ThumbnailSelect(s as PictureBox, files[indexForEvent].Name, indexForEvent);
                 flowLayoutPanel.Controls.Add(pictureBox);
             }
 
@@ -49,21 +53,37 @@ namespace PhotoMark.Controls
 
         public void ClearContent()
         {
+            index = -1;
             var pictureBoxes = flowLayoutPanel.Controls.Cast<PictureBox>().ToList();
             selectedPictureBox = null;
             flowLayoutPanel.Controls.Clear();
             pictureBoxes.ForEach(p => p.Dispose());
         }
 
-        private void ThumbnailClick(PictureBox thumbnail, string fileName)
+        private void ThumbnailSelect(PictureBox thumbnail, string fileName, int newIndex)
         {
             if (selectedPictureBox != null)
                 selectedPictureBox.BackColor = inactiveColor;
             
             selectedPictureBox = thumbnail;
+            index = newIndex;
             thumbnail.BackColor = activeColor;
 
             OnFileSelected(new FileSelectionEventArgs { NewFilePath = fileName });
+        }
+
+        private void buttonPrevious_Click(object sender, EventArgs e)
+        {
+            var newIndex = index - 1;
+            if (newIndex >= 0)
+                ThumbnailSelect(flowLayoutPanel.Controls[newIndex] as PictureBox, files[newIndex].Name, newIndex);
+        }
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+            var newIndex = index + 1;
+            if (newIndex < files.Count)
+                ThumbnailSelect(flowLayoutPanel.Controls[newIndex] as PictureBox, files[newIndex].Name, newIndex);
         }
     }
 }
