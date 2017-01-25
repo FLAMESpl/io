@@ -74,8 +74,11 @@ namespace PhotoMark.Controls
         {
             var eventArgs = (MouseEventArgs)e;
             var marker = new Marker();
-            var scale = pictureBox.Image.Size.Height / (double)pictureBox.Size.Height;
-            marker.Position = new Point((int)(eventArgs.X * scale), (int)(eventArgs.Y * scale));
+            var pictureBox = sender as PictureBox;
+            var image = pictureBox.Image;
+            var scale = image.Size.Width / (double)pictureBox.Size.Width;
+
+            marker.Position = eventArgs.Location.MapToImage(pictureBox.Size, image.Size);
             activeFile.Annotations.Add(marker);
             activeFile.HasChanged = true;
             DrawMarker(marker);

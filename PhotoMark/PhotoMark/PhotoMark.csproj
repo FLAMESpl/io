@@ -61,6 +61,7 @@
     <Compile Include="Controls\Workspace.Designer.cs">
       <DependentUpon>Workspace.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions.cs" />
     <Compile Include="Files\File.cs" />
     <Compile Include="Files\FilesExtensions.cs" />
     <Compile Include="Forms\Interface.cs">
