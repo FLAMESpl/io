@@ -33,8 +33,8 @@ namespace PhotoMark.Controls
 
         public void ShowFiles(IReadOnlyList<File> files)
         {
-            this.files = files;
             ClearContent();
+            this.files = files;
             for (int i = 0; i < files.Count; i++)
             {
                 var pictureBox = new PictureBox
@@ -74,16 +74,22 @@ namespace PhotoMark.Controls
 
         private void buttonPrevious_Click(object sender, EventArgs e)
         {
-            var newIndex = index - 1;
-            if (newIndex >= 0)
-                ThumbnailSelect(flowLayoutPanel.Controls[newIndex] as PictureBox, files[newIndex].Name, newIndex);
+            if (files != null)
+            {
+                var newIndex = index - 1;
+                if (newIndex >= 0)
+                    ThumbnailSelect(flowLayoutPanel.Controls[newIndex] as PictureBox, files[newIndex].Name, newIndex);
+            }
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            var newIndex = index + 1;
-            if (newIndex < files.Count)
-                ThumbnailSelect(flowLayoutPanel.Controls[newIndex] as PictureBox, files[newIndex].Name, newIndex);
+            if (files != null)
+            {
+                var newIndex = index + 1;
+                if (newIndex < files.Count)
+                    ThumbnailSelect(flowLayoutPanel.Controls[newIndex] as PictureBox, files[newIndex].Name, newIndex);
+            }
         }
     }
 }

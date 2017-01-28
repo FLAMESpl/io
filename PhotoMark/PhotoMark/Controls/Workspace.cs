@@ -23,7 +23,18 @@ namespace PhotoMark.Controls
             carousel.FileSelection += carousel_FileSelected;
         }
 
-        public void SaveFilePacket() => files.ForEach(f => f.SaveAnnotations());
+        public void SaveFilePacket()
+        {
+            foreach (var file in files)
+            {
+                if (file.HasChanged)
+                {
+                    file.HasChanged = false;
+                    file.SaveAnnotations();
+                }
+
+            }
+        }
 
         public void LoadFilePacket(string directory)
         {
@@ -32,6 +43,7 @@ namespace PhotoMark.Controls
                     .Select(f => new File(f).LoadAnnotations()))
                     .SortByName();
 
+            pictureBox.Image = null;
             carousel.ShowFiles(files);
         }
 
@@ -73,9 +85,12 @@ namespace PhotoMark.Controls
         private void pictureBox_Click(object sender, EventArgs e)
         {
             var eventArgs = (MouseEventArgs)e;
-            var marker = new Marker();
             var pictureBox = sender as PictureBox;
             var image = pictureBox.Image;
+            if (image == null)
+                return;
+
+            var marker = new Marker();
             var scale = image.Size.Width / (double)pictureBox.Size.Width;
 
             marker.Position = eventArgs.Location.MapToImage(pictureBox.Size, image.Size);
